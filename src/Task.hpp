@@ -8,6 +8,7 @@ using namespace std;
 class Task{
 public:
     Task();
+    void dispContents();
 
     //getters
     string getLabel();

@@ -6,9 +6,27 @@ using namespace std;
 
 Task::Task(){
   setLabel("NULL");
+  setMilestone("NULL");
+  setDueDay(0);
+  setDueMonth(0);
+  setDueYear(0);
+  setStatus("NULL");
+  setDifficulty(0);
+  setComplexity(0);
+  setPriorityLevel(0);
 }
 
-
+void Task::dispContents(){
+  cout << getLabel() << endl;
+  cout << getMilestone() << endl;
+  cout << getDueDay() << endl;
+  cout << getDueMonth() << endl;
+  cout << getDueYear() << endl;
+  cout << getStatus() << endl;
+  cout << getDifficulty() << endl;
+  cout << getComplexity() << endl;
+  cout << getPriorityLevel() << endl;
+}
 
 
 

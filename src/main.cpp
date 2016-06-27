@@ -7,7 +7,8 @@
 using namespace std;
 
 void makeTask(string srcLine, Task& pTask);
-int taskArraySize = 50;
+void displayTaskArrayContents(Task myTasks[], int taskArraySize);
+int taskArraySize = 20;
 
 int main(){
   ifstream taskFile("tasks.src");
@@ -24,21 +25,6 @@ int main(){
     lineNum++;
   }
   taskFile.close();
-  // echoing tasks
-  for(int i = 0; i <= taskArraySize; i++){
-    // cout << myTasks[i].getLabel() << endl;
-    cout << i << ". \n";
-    cout << myTasks[i].getLabel() << endl;
-    cout << myTasks[i].getMilestone() << endl;
-    cout << myTasks[i].getDueDay() << endl;
-    cout << myTasks[i].getDueMonth() << endl;
-    cout << myTasks[i].getDueYear() << endl;
-    cout << myTasks[i].getStatus() << endl;
-    cout << myTasks[i].getDifficulty() << endl;
-    cout << myTasks[i].getComplexity() << endl;
-    cout << myTasks[i].getPriorityLevel() << endl;
-    cout << endl << endl;
-  }
   return 0;
 }
 
@@ -95,5 +81,15 @@ void makeTask(string srcLine, Task& pTask){
     else{
       columnName += srcLine[currentCharPos];
     }
+  }
+}
+
+
+void displayTaskArrayContents(Task myTasks[], int taskArraySize){
+  // echoing tasks
+  for(int i = 0; i <= taskArraySize; i++){
+    cout << i << ".\n";
+    myTasks[i].dispContents();
+    cout << endl;
   }
 }
