@@ -20,72 +20,86 @@ int main(){
   while(!taskFile.eof()){
     string line;
     getline(taskFile, line);
-    cout << line << endl;
+    // cout << line << endl;
     makeTask(line, myTasks[lineNum]);
     lineNum++;
   }
   taskFile.close();
   cout << "closed file\n\n\n\n";
-
+  cout << "before\n" << myTasks[0].getLabel() << "\nafter\n";
+  myTasks[0].setLabel("myLabel");
+  cout << "before\n" << myTasks[0].getLabel() << "\nafter\n";
   //echoing tasks
-  for(int i = 0; i <= taskArraySize; i++){
-    cout << myTasks[i].getLabel() << endl;
-  }
+  // for(int i = 0; i <= taskArraySize; i++){
+  //   cout << myTasks[i].getLabel() << endl;
+  // }
   return 0;
 }
 
 
 //careful about order
 void makeTask(string srcLine, Task pTask){
+  // cout << srcLine << endl;
   int columnPos = 0;
   string columnName = "";
   for(int currentCharPos = 0; currentCharPos < srcLine.size(); currentCharPos++){
-    if(srcLine[currentCharPos] = ',') {
+    if(srcLine[currentCharPos] == ',') {
+      if(columnPos == 0){//label
+        cout << columnName << endl;
+        pTask.setLabel(columnName.c_str());
+        columnName.clear();
+      }
+      else if(columnPos == 1){//milestone
+        cout << columnName << endl;
+        pTask.setMilestone(columnName.c_str());
+        columnName.clear();
+      }
+      else if(columnPos == 2){//dueDay
+        cout << columnName << endl;
+        pTask.setDueDay(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else if(columnPos == 3){//dueMonth
+        cout << columnName << endl;
+        pTask.setDueMonth(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else if(columnPos == 4){//dueYear
+        cout << columnName << endl;
+        pTask.setDueYear(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else if(columnPos == 5){//status
+        cout << columnName << endl;
+        pTask.setStatus(columnName.c_str());
+        columnName.clear();
+      }
+      else if(columnPos == 6){//difficulty
+        cout << columnName << endl;
+        pTask.setDifficulty(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else if(columnPos == 7){//complexity
+        cout << columnName << endl;
+        pTask.setComplexity(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else if(columnPos == 8){//priorityLevel
+        cout << columnName << endl;
+        pTask.setPriorityLevel(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else {
+        cout << "column unknown... quitting task creation on task line \n ";
+        cout << srcLine << endl;
+      }
       columnPos++;
       continue;
     }
-
-    if(columnPos = 0){//label
-      pTask.setLabel(columnName.c_str());
-      columnName.clear();
-    }
-    else if(columnPos = 5){//milestone
-      pTask.setMilestone(columnName.c_str());
-      columnName.clear();
-    }
-    else if(columnPos = 3){//dueDay
-      pTask.setDueDay(atoi(columnName.c_str()));
-      columnName.clear();
-    }
-    else if(columnPos = 1){//dueMonth
-      pTask.setDueMonth(atoi(columnName.c_str()));
-      columnName.clear();
-    }
-    else if(columnPos = 2){//dueYear
-      pTask.setDueYear(atoi(columnName.c_str()));
-      columnName.clear();
-    }
-    else if(columnPos = 4){//status
-      pTask.setStatus(columnName.c_str());
-      columnName.clear();
-    }
-    else if(columnPos = 6){//difficulty
-      pTask.setDifficulty(atoi(columnName.c_str()));
-      columnName.clear();
-    }
-    else if(columnPos = 7){//complexity
-      pTask.setComplexity(atoi(columnName.c_str()));
-      columnName.clear();
-    }
-    else if(columnPos = 8){//priorityLevel
-      pTask.setPriorityLevel(atoi(columnName.c_str()));
-      columnName.clear();
-    }
-    else {
-      // cout << "column unknown... quitting task creation on task line \n ";
-      // cout << srcLine << endl;
+    else{
       columnName += srcLine[currentCharPos];
-      cout << columnName << endl;
+      // cout << srcLine[currentCharPos];
     }
+    // cout << srcLine[currentCharPos];
   }
 }
