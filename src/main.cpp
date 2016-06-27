@@ -11,11 +11,14 @@ void displayTaskArrayContents(Task myTasks[], int taskArraySize);
 int taskArraySize = 20;
 
 int main(){
+  //Open task source file
   ifstream taskFile("tasks.src");
   if(!taskFile) {
     cout << "Unable to open tasks source file. Terminating...\n";
     exit(-1);
   }
+
+  //Creat task array and fill it with the contents from the source file
   Task myTasks[taskArraySize];
   int lineNum = 0;
   while(!taskFile.eof()){
@@ -25,6 +28,9 @@ int main(){
     lineNum++;
   }
   taskFile.close();
+  //TASK OBJECTS READY!!!
+  //_______________________
+
   return 0;
 }
 
