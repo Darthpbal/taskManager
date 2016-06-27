@@ -9,7 +9,7 @@ class Task{
 public:
     Task();
 
-    //getters and setters
+    //getters
     string getLabel();
     string getMilestone();
     int getDueDay();
@@ -20,7 +20,7 @@ public:
     int getComplexity();
     int getPriorityLevel();
 
-
+    //setters
     bool setLabel(string pLabel);
     bool setMilestone(string pMilestone);
     bool setDueDay(int pDueDay);

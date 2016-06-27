@@ -20,18 +20,24 @@ int main(){
   while(!taskFile.eof()){
     string line;
     getline(taskFile, line);
-    // cout << line << endl;
     makeTask(line, myTasks[lineNum]);
     lineNum++;
   }
   taskFile.close();
-  // cout << "closed file\n\n\n\n";
-  // cout << "before\n" << myTasks[0].getLabel() << "\nafter\n";
-  // myTasks[0].setLabel("myLabel");
-  // cout << "before\n" << myTasks[0].getLabel() << "\nafter\n";
   // echoing tasks
   for(int i = 0; i <= taskArraySize; i++){
+    // cout << myTasks[i].getLabel() << endl;
+    cout << i << ". \n";
     cout << myTasks[i].getLabel() << endl;
+    cout << myTasks[i].getMilestone() << endl;
+    cout << myTasks[i].getDueDay() << endl;
+    cout << myTasks[i].getDueMonth() << endl;
+    cout << myTasks[i].getDueYear() << endl;
+    cout << myTasks[i].getStatus() << endl;
+    cout << myTasks[i].getDifficulty() << endl;
+    cout << myTasks[i].getComplexity() << endl;
+    cout << myTasks[i].getPriorityLevel() << endl;
+    cout << endl << endl;
   }
   return 0;
 }
@@ -39,53 +45,43 @@ int main(){
 
 //careful about order
 void makeTask(string srcLine, Task& pTask){
-  // cout << srcLine << endl;
   int columnPos = 0;
   string columnName = "";
   for(int currentCharPos = 0; currentCharPos < srcLine.size(); currentCharPos++){
     if(srcLine[currentCharPos] == ',') {
       if(columnPos == 0){//label
-        // cout << columnName << endl;
         pTask.setLabel(columnName.c_str());
         columnName.clear();
       }
       else if(columnPos == 1){//milestone
-        // cout << columnName << endl;
         pTask.setMilestone(columnName.c_str());
         columnName.clear();
       }
       else if(columnPos == 2){//dueDay
-        // cout << columnName << endl;
         pTask.setDueDay(atoi(columnName.c_str()));
         columnName.clear();
       }
       else if(columnPos == 3){//dueMonth
-        // cout << columnName << endl;
         pTask.setDueMonth(atoi(columnName.c_str()));
         columnName.clear();
       }
       else if(columnPos == 4){//dueYear
-        // cout << columnName << endl;
         pTask.setDueYear(atoi(columnName.c_str()));
         columnName.clear();
       }
       else if(columnPos == 5){//status
-        // cout << columnName << endl;
         pTask.setStatus(columnName.c_str());
         columnName.clear();
       }
       else if(columnPos == 6){//difficulty
-        // cout << columnName << endl;
         pTask.setDifficulty(atoi(columnName.c_str()));
         columnName.clear();
       }
       else if(columnPos == 7){//complexity
-        // cout << columnName << endl;
         pTask.setComplexity(atoi(columnName.c_str()));
         columnName.clear();
       }
       else if(columnPos == 8){//priorityLevel
-        // cout << columnName << endl;
         pTask.setPriorityLevel(atoi(columnName.c_str()));
         columnName.clear();
       }
@@ -98,8 +94,6 @@ void makeTask(string srcLine, Task& pTask){
     }
     else{
       columnName += srcLine[currentCharPos];
-      // cout << srcLine[currentCharPos];
     }
-    // cout << srcLine[currentCharPos];
   }
 }
