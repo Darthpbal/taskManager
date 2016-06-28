@@ -11,6 +11,7 @@ void displayTaskArrayContents(Task myTasks[], int taskArraySize);
 int taskArraySize = 20;
 
 int main(){
+  //Setup task object list
   //Open task source file
   ifstream taskFile("tasks.src");
   if(!taskFile) {
@@ -30,6 +31,8 @@ int main(){
   taskFile.close();
   //TASK OBJECTS READY!!!
   //_______________________
+
+
 
   return 0;
 }
