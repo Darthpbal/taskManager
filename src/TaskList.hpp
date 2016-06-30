@@ -6,8 +6,6 @@
 
 using namespace std;
 
-const int taskListCapacity = 20;
-
 class TaskList{
 public:
     TaskList();             //ctor
@@ -21,7 +19,7 @@ public:
 
     bool setTask(int taskNum);   //set task based on task number
     bool clearTask(int taskNum); //clear task by task number
-
+    const int taskListCapacity = 20;
 
 private:
     Task list[taskListCapacity];

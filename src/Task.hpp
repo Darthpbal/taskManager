@@ -8,7 +8,8 @@ using namespace std;
 class Task{
 public:
     Task();
-    void dispContents();
+    void dispContents();//send the contents of the task to stdout
+    string delim();//return a delimited string of the task contents.
     bool clear();  //clears the task like new
 
     //getters

@@ -21,23 +21,11 @@ int taskArraySize = 20;
 
 int main(){
   //Setup task object list
-  //Open task source file
-  ifstream taskFile("tasks.src");
-  if(!taskFile) {
-    cout << "Unable to open tasks source file. Terminating...\n";
-    exit(-1);
-  }
+
 
   //Creat task array and fill it with the contents from the source file
   Task myTasks[taskArraySize];
-  int lineNum = 0;
-  while(!taskFile.eof()){
-    string line;
-    getline(taskFile, line);
-    makeTask(line, myTasks[lineNum]);
-    lineNum++;
-  }
-  taskFile.close();
+
   //TASK OBJECTS READY!!!
   //_______________________
 
