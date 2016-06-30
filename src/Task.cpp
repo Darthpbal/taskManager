@@ -6,11 +6,23 @@ using namespace std;
 
 Task::Task(){
   setLabel("NULL");
-  setMilestone("NULL");
+  setMilestone("");
   setDueDay(0);
   setDueMonth(0);
   setDueYear(0);
-  setStatus("NULL");
+  setStatus("");
+  setDifficulty(0);
+  setComplexity(0);
+  setPriorityLevel(0);
+}
+
+bool Task::clear(){
+  setLabel("NULL");
+  setMilestone("");
+  setDueDay(0);
+  setDueMonth(0);
+  setDueYear(0);
+  setStatus("");
   setDifficulty(0);
   setComplexity(0);
   setPriorityLevel(0);

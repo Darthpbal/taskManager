@@ -9,6 +9,7 @@ class Task{
 public:
     Task();
     void dispContents();
+    bool clear();  //clears the task like new
 
     //getters
     string getLabel();
