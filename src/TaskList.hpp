@@ -1,24 +1,30 @@
 #ifndef TASKLIST_HPP
 #define TASKLIST_HPP
 
+#include <string>
+#include "Task.hpp"
+
 using namespace std;
+
+const int taskListCapacity = 20;
 
 class TaskList{
 public:
     TaskList();             //ctor
-    saveList();             //save task list to file.
+    bool saveList();             //save task list to file.
+    bool constructList();
+    string getTask();
 
-    updateTask(/*task data*/);
-    createTask(/*task data*/);
-    deleteTask(int taskNum);
+    bool updateTask(/*task data*/);
+    bool createTask(/*task data*/);
+    bool deleteTask(int taskNum);
 
-    setTask(int taskNum);   //set task based on task number
-    clearTask(int taskNum); //clear task by task number
+    bool setTask(int taskNum);   //set task based on task number
+    bool clearTask(int taskNum); //clear task by task number
 
 
 private:
-    int TaskListCapacity;
-    Task TaskList[TaskListCapacity]
+    Task list[taskListCapacity];
 };
 
 #endif // TASKLIST_HPP
