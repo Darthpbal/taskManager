@@ -1,22 +1,32 @@
 #include <fstream>
+#include <cstdlib>
 #include "TaskList.hpp"
 
 using namespace std;
-string taskFileName = "tasks.src";
+//string taskFileName = "tasks.src";
 
-TaskList::TaskList(){     //ctor
+TaskList::TaskList(string taskFileName){     //ctor
   //Open task source file
-  fstream taskFile(taskFileName.c_str());
+  ifstream taskFile(taskFileName.c_str());
   if(!taskFile) {
     cout << "Unable to open tasks source file. Attempting to create new file...\n";
+    ofstream blankFile(taskFileName.c_str());
+    for(int i = taskListCapacity; i < taskListCapacity; i++){
+    	//list[i].clear();
+    	//blankFile << list[i].delim() << endl;
+    }
+    blankFile.close();
+    taskFile.close();
     exit(-1);
   }
   int lineNum = 0;
   while(!taskFile.eof()){
     string line;
     getline(taskFile, line);
-    makeTask(line, myTasks[lineNum]);
+    //makeTask(line, myTasks[lineNum]);
+    list[lineNum].make(line);
     lineNum++;
   }
   taskFile.close();
 }
+
