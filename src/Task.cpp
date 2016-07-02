@@ -42,22 +42,39 @@ void Task::dispContents(){
 
 string Task::delim(){
     string contents = "";
+    // contents.append(getLabel());
+    // contents.append(",");
     contents += getLabel();
     contents += ",";
+    // contents.append(getMilestone());
+    // contents.append(",");
     contents += getMilestone();
     contents += ",";
+    // contents.append(getDueDay());
+    // contents.append(",");
     contents += getDueDay();
     contents += ",";
+    // contents.append(getDueMonth());
+    // contents.append(",");
     contents += getDueMonth();
     contents += ",";
+    // contents.append(getDueYear());
+    // contents.append(",");
     contents += getDueYear();
     contents += ",";
+    // contents.append(getStatus());
+    // contents.append(",");
     contents += getStatus();
     contents += ",";
+    // contents.append(getDifficulty());
+    // contents.append(",");
     contents += getDifficulty();
     contents += ",";
+    // contents.append(getComplexity());
+    // contents.append(",");
     contents += getComplexity();
     contents += ",";
+    // contents.append(getPriorityLevel());
     contents += getPriorityLevel();
     return contents;
 }
