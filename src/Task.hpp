@@ -11,6 +11,7 @@ public:
     void dispContents();//send the contents of the task to stdout
     string delim();//return a delimited string of the task contents.
     bool clear();  //clears the task like new
+    bool make(string line);
 
     //getters
     string getLabel();

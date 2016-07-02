@@ -40,6 +40,24 @@ void Task::dispContents(){
   cout << getPriorityLevel() << endl;
 }
 
+string Task::delim(){
+    string contents = "";
+    contents += getLabel();
+    contents += getMilestone();
+    contents += getDueDay();
+    contents += getDueMonth();
+    contents += getDueYear();
+    contents += getStatus();
+    contents += getDifficulty();
+    contents += getComplexity();
+    contents += getPriorityLevel();
+    return contents;
+}
+
+bool Task::make(string line){
+  return true;
+}
+
 
 
 /*
