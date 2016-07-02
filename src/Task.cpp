@@ -1,16 +1,17 @@
 #include "Task.hpp"
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
 
 Task::Task(){
   setLabel("NULL");
-  setMilestone("");
+  setMilestone("NULL");
   setDueDay(0);
   setDueMonth(0);
   setDueYear(0);
-  setStatus("");
+  setStatus("NULL");
   setDifficulty(0);
   setComplexity(0);
   setPriorityLevel(0);
@@ -18,11 +19,11 @@ Task::Task(){
 
 bool Task::clear(){
   setLabel("NULL");
-  setMilestone("");
+  setMilestone("NULL");
   setDueDay(0);
   setDueMonth(0);
   setDueYear(0);
-  setStatus("");
+  setStatus("NULL");
   setDifficulty(0);
   setComplexity(0);
   setPriorityLevel(0);
@@ -41,42 +42,17 @@ void Task::dispContents(){
 }
 
 string Task::delim(){
-    string contents = "";
-    // contents.append(getLabel());
-    // contents.append(",");
-    contents += getLabel();
-    contents += ",";
-    // contents.append(getMilestone());
-    // contents.append(",");
-    contents += getMilestone();
-    contents += ",";
-    // contents.append(getDueDay());
-    // contents.append(",");
-    contents += getDueDay();
-    contents += ",";
-    // contents.append(getDueMonth());
-    // contents.append(",");
-    contents += getDueMonth();
-    contents += ",";
-    // contents.append(getDueYear());
-    // contents.append(",");
-    contents += getDueYear();
-    contents += ",";
-    // contents.append(getStatus());
-    // contents.append(",");
-    contents += getStatus();
-    contents += ",";
-    // contents.append(getDifficulty());
-    // contents.append(",");
-    contents += getDifficulty();
-    contents += ",";
-    // contents.append(getComplexity());
-    // contents.append(",");
-    contents += getComplexity();
-    contents += ",";
-    // contents.append(getPriorityLevel());
-    contents += getPriorityLevel();
-    return contents;
+    stringstream contents;
+    contents << getLabel() << ",";
+    contents << getMilestone() << ",";
+    contents << getDueDay() << ",";
+    contents << getDueMonth() << ",";
+    contents << getDueYear() << ",";
+    contents << getStatus() << ",";
+    contents << getDifficulty() << ",";
+    contents << getComplexity() << ",";
+    contents << getPriorityLevel();
+    return contents.str();
 }
 
 bool Task::make(string line){
