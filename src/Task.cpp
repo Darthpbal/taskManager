@@ -43,13 +43,21 @@ void Task::dispContents(){
 string Task::delim(){
     string contents = "";
     contents += getLabel();
+    contents += ",";
     contents += getMilestone();
+    contents += ",";
     contents += getDueDay();
+    contents += ",";
     contents += getDueMonth();
+    contents += ",";
     contents += getDueYear();
+    contents += ",";
     contents += getStatus();
+    contents += ",";
     contents += getDifficulty();
+    contents += ",";
     contents += getComplexity();
+    contents += ",";
     contents += getPriorityLevel();
     return contents;
 }
