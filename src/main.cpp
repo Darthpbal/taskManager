@@ -13,6 +13,7 @@ _______________________________________________________________________________
 #include <iomanip>
 #include <fstream>
 #include "Task.hpp"
+#include "TaskList.hpp"
 using namespace std;
 
 void makeTask(string srcLine, Task& pTask);
@@ -21,10 +22,10 @@ int taskArraySize = 20;
 
 int main(){
   //Setup task object list
-
+  TaskList toDo("myToDoList.txt");
 
   //Creat task array and fill it with the contents from the source file
-  Task myTasks[taskArraySize];
+  //Task myTasks[taskArraySize];
 
   //TASK OBJECTS READY!!!
   //_______________________
