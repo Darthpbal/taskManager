@@ -10,13 +10,14 @@ TaskList::TaskList(string taskFileName){     //ctor
   ifstream taskFile(taskFileName.c_str());
   if(!taskFile) {
     cout << "Unable to open tasks source file. Attempting to create new file...\n";
+    taskFile.close();
     ofstream blankFile(taskFileName.c_str());
     for(int i = taskListCapacity; i < taskListCapacity; i++){
-    	//list[i].clear();
+      // list[i].clear();
+      // list[i].dispContents();
     	//blankFile << list[i].delim() << endl;
     }
     blankFile.close();
-    taskFile.close();
     exit(-1);
   }
   int lineNum = 0;
@@ -29,4 +30,3 @@ TaskList::TaskList(string taskFileName){     //ctor
   }
   taskFile.close();
 }
-
