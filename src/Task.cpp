@@ -58,6 +58,68 @@ string Task::delim(){
 }
 
 bool Task::make(string line){
+  cout << line << endl;
+  //careful about order
+  int columnPos = 0;
+  string columnName = "";
+  for(int currentCharPos = 0; currentCharPos < srcLine.size(); currentCharPos++){
+    if(srcLine[currentCharPos] == ',') {
+      //label
+      if(columnPos == 0){
+        pTask.setLabel(columnName.c_str());
+        columnName.clear();
+      }
+      //milestone
+      else if(columnPos == 1){
+        pTask.setMilestone(columnName.c_str());
+        columnName.clear();
+      }
+      //dueDay
+      else if(columnPos == 2){
+        pTask.setDueDay(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //dueMonth
+      else if(columnPos == 3){
+        pTask.setDueMonth(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //dueYear
+      else if(columnPos == 4){
+        pTask.setDueYear(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //status
+      else if(columnPos == 5){
+        pTask.setStatus(columnName.c_str());
+        columnName.clear();
+      }
+      //difficulty
+      else if(columnPos == 6){
+        pTask.setDifficulty(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //complexity
+      else if(columnPos == 7){
+        pTask.setComplexity(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //priorityLevel
+      else if(columnPos == 8){
+        pTask.setPriorityLevel(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else {
+        cout << "column unknown... quitting task creation on task line \n ";
+        cout << srcLine << endl;
+      }
+      columnPos++;
+      continue;
+    }
+    else{
+      columnName += srcLine[currentCharPos];
+    }
+  }
   return true;
 }
 
