@@ -41,6 +41,8 @@ void Task::dispContents(){
   cout << getPriorityLevel() << endl;
 }
 
+//Using stream stream allows me to treat the string like stdin or stdout, and
+//appears to handle concatenating integers alongside strings easier.
 string Task::delim(){
     stringstream contents;
     contents << getLabel() << ",";
