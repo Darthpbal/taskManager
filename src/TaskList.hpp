@@ -32,15 +32,10 @@ public:
     const static int taskListCapacity = 20;
     TaskList(string);             //ctor
     bool saveList();             //save task list to file.
-    bool constructList();
 
-    string getTask(int taskNum);
     bool updateTask(int taskNum, string taskLine);
-    bool createTask(string taskLine);
+    int createTask(string taskLine);
     bool deleteTask(int taskNum);
-
-    bool setTask(int taskNum, string taskLine);   //set task based on task number
-    bool clearTask(int taskNum); //clear task by task number
 
 private:
     Task list[taskListCapacity];

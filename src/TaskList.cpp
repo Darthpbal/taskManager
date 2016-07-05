@@ -1,6 +1,7 @@
 #include <fstream>
 #include <cstdlib>
 #include "TaskList.hpp"
+#include "Task.hpp"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ TaskList::TaskList(string ptaskFileName){     //ctor
   //Open task source file
   ifstream taskFile(taskFileName.c_str());
 
-  // used to detect whether or not the taskfile input file stream must be recreated
+  // used to detect whether or not the taskFile input file stream must be recreated
   bool srcFileErr = false;
 
   //if unable to open an existing task file, create one...
@@ -28,36 +29,47 @@ TaskList::TaskList(string ptaskFileName){     //ctor
     blankFile.close();
   }
 
-
+  //reopen the task source file if needed, then construct the task list array from the source file
   if(srcFileErr) taskFile.open(taskFileName.c_str());
+  //detect if the end of file is reached. This should never happen!
   for(int i = 0; i < taskListCapacity; i++){
     if(taskFile.eof()){
       cout << "EOF reached!!! Uh oh!!!\n";
       i = taskListCapacity;
       break;
     }
+    // get a line, if the line has a length above zero, process it. Sometimes the last line of a file is empty.
     string line = "";
     getline(taskFile, line);
     if(line.size()){
       list[i].make(line);
     }
   }
+  taskFile.close();
 }
 
-bool Task::saveList(){
-
+bool TaskList::saveList(){
+  ifstream taskFile(taskFileName.c_str());
+  for (int i = 0; i < taskListCapacity; i++) {
+    taskFile << list[i].delim();
+  }
+  taskFile.close();
 }
 
+int TaskList::createTask(string taskLine){
+  int newTaskPos = 0;
+  for(int i = 0; list[i].getLabel() != "NULL"; i++){
+    newTaskPos++;
+  }
+  list[newTaskPos].make(taskLine);
+  return newTaskPos;
+}
 
+bool TaskList::updateTask(int taskNum, string taskLine){
+  list[taskNum].make(taskLine);
+  return (list[taskNum].delim() == taskLine)? true: false;
+}
 
-// TaskList(string);             //ctor
-// bool saveList();             //save task list to file.
-// bool constructList();
-//
-// string getTask(int taskNum);
-// bool updateTask(int taskNum, string taskLine);
-// bool createTask(string taskLine);
-// bool deleteTask(int taskNum);
-//
-// bool setTask(int taskNum, string taskLine);   //set task based on task number
-// bool clearTask(int taskNum);
+bool TaskList::deleteTask(int taskNum){
+  return list[taskNum].clear();
+}
