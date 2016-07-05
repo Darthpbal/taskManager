@@ -4,7 +4,8 @@
 
 using namespace std;
 
-TaskList::TaskList(string taskFileName){     //ctor
+TaskList::TaskList(string ptaskFileName){     //ctor
+  taskFileName = ptaskFileName
   cout << "Task list capacity is " << taskListCapacity << endl;
 
   //Open task source file
@@ -43,7 +44,9 @@ TaskList::TaskList(string taskFileName){     //ctor
   }
 }
 
+bool Task::saveList(){
 
+}
 
 
 

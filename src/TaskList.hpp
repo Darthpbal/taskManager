@@ -44,6 +44,7 @@ public:
 
 private:
     Task list[taskListCapacity];
+    string taskFileName;
 };
 
 #endif // TASKLIST_HPP
