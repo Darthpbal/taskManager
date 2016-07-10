@@ -6,7 +6,7 @@
 using namespace std;
 
 TaskList::TaskList(string ptaskFileName){     //ctor
-  taskFileName = ptaskFileName
+  taskFileName = ptaskFileName;
   cout << "Task list capacity is " << taskListCapacity << endl;
 
   //Open task source file
@@ -15,7 +15,7 @@ TaskList::TaskList(string ptaskFileName){     //ctor
   // used to detect whether or not the taskFile input file stream must be recreated
   bool srcFileErr = false;
 
-  //if unable to open an existing task file, create one...
+  //if unable to open an existing task file, create one using an empty task set of data
   if(!taskFile) {
     srcFileErr = true;
     cout << "Unable to open tasks source file. Attempting to create new file...\n";
@@ -23,7 +23,6 @@ TaskList::TaskList(string ptaskFileName){     //ctor
     ofstream blankFile(taskFileName.c_str());
     for(int i = 0; i < taskListCapacity; i++){
       list[i].clear();
-      list[i].dispContents();
     	blankFile << list[i].delim() << endl;
     }
     blankFile.close();
@@ -49,7 +48,7 @@ TaskList::TaskList(string ptaskFileName){     //ctor
 }
 
 bool TaskList::saveList(){
-  ifstream taskFile(taskFileName.c_str());
+  ofstream taskFile(taskFileName.c_str());
   for (int i = 0; i < taskListCapacity; i++) {
     taskFile << list[i].delim();
   }
