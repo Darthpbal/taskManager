@@ -1,7 +1,12 @@
 #include "Task.hpp"
 #include <iostream>
 #include <sstream>
+<<<<<<< HEAD
 //daniaaaaaaaaaaaaaaaa
+=======
+#include <cstdlib>
+
+>>>>>>> 6a3980ac4e6d04bb490f2e02a5a3c0f2aabe2c83
 using namespace std;
 
 
@@ -41,6 +46,8 @@ void Task::dispContents(){
   cout << getPriorityLevel() << endl;
 }
 
+//Using stream stream allows me to treat the string like stdin or stdout, and
+//appears to handle concatenating integers alongside strings easier.
 string Task::delim(){
     stringstream contents;
     contents << getLabel() << ",";
@@ -56,6 +63,67 @@ string Task::delim(){
 }
 
 bool Task::make(string line){
+  //careful about order
+  int columnPos = 0;
+  string columnName = "";
+  for(int currentCharPos = 0; currentCharPos < line.size(); currentCharPos++){
+    if(line[currentCharPos] == ',') {
+      //label
+      if(columnPos == 0){
+        setLabel(columnName.c_str());
+        columnName.clear();
+      }
+      //milestone
+      else if(columnPos == 1){
+        setMilestone(columnName.c_str());
+        columnName.clear();
+      }
+      //dueDay
+      else if(columnPos == 2){
+        setDueDay(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //dueMonth
+      else if(columnPos == 3){
+        setDueMonth(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //dueYear
+      else if(columnPos == 4){
+        setDueYear(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //status
+      else if(columnPos == 5){
+        setStatus(columnName.c_str());
+        columnName.clear();
+      }
+      //difficulty
+      else if(columnPos == 6){
+        setDifficulty(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //complexity
+      else if(columnPos == 7){
+        setComplexity(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      //priorityLevel
+      else if(columnPos == 8){
+        setPriorityLevel(atoi(columnName.c_str()));
+        columnName.clear();
+      }
+      else {
+        cout << "column unknown... quitting task creation on task line \n ";
+        cout << line << endl;
+      }
+      columnPos++;
+      continue;
+    }
+    else{
+      columnName += line[currentCharPos];
+    }
+  }
   return true;
 }
 
