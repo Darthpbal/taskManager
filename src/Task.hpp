@@ -32,6 +32,7 @@ Task has interface and attributes:
 
 class Task{
 public:
+    const static char delim = '.';
     Task();
     void dispContents();//send the contents of the task to stdout
     string delim();//return a delimited string of the task contents.
