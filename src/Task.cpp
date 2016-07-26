@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
-
 using namespace std;
 
 
@@ -42,18 +41,18 @@ void Task::dispContents(){
   cout << getPriorityLevel() << endl;
 }
 
-//Using stream stream allows me to treat the string like stdin or stdout, and
+//Using stream stream allows me to treat the string like stdin or stdout and
 //appears to handle concatenating integers alongside strings easier.
 string Task::delim(){
     stringstream contents;
-    contents << getLabel() << ",";
-    contents << getMilestone() << ",";
-    contents << getDueDay() << ",";
-    contents << getDueMonth() << ",";
-    contents << getDueYear() << ",";
-    contents << getStatus() << ",";
-    contents << getDifficulty() << ",";
-    contents << getComplexity() << ",";
+    contents << getLabel() << delim;
+    contents << getMilestone() << delim;
+    contents << getDueDay() << delim;
+    contents << getDueMonth() << delim;
+    contents << getDueYear() << delim;
+    contents << getStatus() << delim;
+    contents << getDifficulty() << delim;
+    contents << getComplexity() << delim;
     contents << getPriorityLevel();
     return contents.str();
 }
@@ -63,7 +62,7 @@ bool Task::make(string line){
   int columnPos = 0;
   string columnName = "";
   for(int currentCharPos = 0; currentCharPos < line.size(); currentCharPos++){
-    if(line[currentCharPos] == ',') {
+    if(line[currentCharPos] == delim) {
       //label
       if(columnPos == 0){
         setLabel(columnName.c_str());
