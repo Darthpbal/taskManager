@@ -10,3 +10,5 @@ http://www.sfml-dev.org/tutorials/2.3/
 >_______________________________________________________________________________
 Should I add some kinda gantt chart functionality to this as well? Gantt generator
 based on due dates or something? You'd have to have a prerequisite task or something for that
+
+add appointment attribute somehow to the task class
